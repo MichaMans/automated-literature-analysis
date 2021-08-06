@@ -16,7 +16,7 @@ def build_citation_network(docs):
                     g.add_edge(title2index[ref], i)
 
     return g
-                
+
 
 def plot_citation_network(docs, **kwargs):
     """ Plot the citation network of the given `DocumentSet` where nodes
@@ -34,7 +34,12 @@ def plot_citation_network(docs, **kwargs):
     options = dict(
     )
     options.update(kwargs)
-    networkx.draw(g, **options)
+    deg = dict(g.degree())
+    valid = [k for k in deg if deg[k] >= 2]
+    not_valid = [k for k in deg if deg[k] < 2]
+    g.remove_nodes_from(not_valid)
+    labels = dict((n, g.nodes[n]['label']) for n in g.nodes if n in valid)
+    networkx.draw_networkx(g, labels=labels, **options)
 
 
 def build_coauthor_network(docs):
@@ -87,6 +92,7 @@ def plot_coauthor_network(docs, top_k=25, min_degree=1, **kwargs):
 
     deg = dict(g.degree())
     valid = [k for k in deg if deg[k] >= min_degree]
+    not_valid = [k for k in deg if deg[k] < min_degree]
     max_deg = float(max(deg.values()))
 
     top_authors = sorted(deg, key=lambda k: deg[k], reverse=True)[:top_k]
@@ -99,5 +105,6 @@ def plot_coauthor_network(docs, top_k=25, min_degree=1, **kwargs):
             edge_color='darkgray',
     )
     options.update(kwargs)
-    networkx.draw(g, **options)
+    g.remove_nodes_from(not_valid)
+    networkx.draw_networkx(g, **options)
     

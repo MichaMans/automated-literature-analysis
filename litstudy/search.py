@@ -6,6 +6,7 @@ from tqdm import tqdm
 import requests
 from urllib.parse import quote_plus
 import bibtexparser
+from bibtexparser.customization import convert_to_unicode
 import iso639
 import os
 import pickle
@@ -258,8 +259,9 @@ def load_bibtex(file, docs=None, lookup_authors=False):
     """Load the content of a BibTex file."""
 
     documents = []
-    with open(file) as bibtex_file:
+    with open(file, encoding="utf-8") as bibtex_file:
         parser = bibtexparser.bparser.BibTexParser(common_strings=True)
+        parser.customization = convert_to_unicode
         bibtex_data = bibtexparser.load(bibtex_file, parser=parser)
     bibtex_file.close()
     for paper in tqdm(bibtex_data.entries):
