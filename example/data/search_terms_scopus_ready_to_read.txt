@@ -1,0 +1,57 @@
+###
+search_1
+###
+TITLE-ABS-KEY(
+		"low temperature network*"
+		OR "ultra low temperature network*"
+		OR "low temperature grid*" 
+		OR "ultra low temperature grid*"
+		OR "5th generation grid*"
+		OR "5th generation network*" 
+		OR "5th generation district heating and cooling"
+		OR "fifth generation grid*"
+		OR "fifth generation network*"
+		OR "fifth generation district heating and cooling"
+		OR "fith-generation grid*"
+		OR "fith-generation network*"
+		OR "fith-generation district heating and cooling")
+		AND TITLE-ABS-KEY(
+		"district*"
+		OR "energ*"
+		OR "heat*"
+		OR "cool*")
+###
+search_2
+###
+TITLE-ABS-KEY(
+		"low temperature network*"
+		OR "ultra low temperature network*"
+		OR "low temperature grid*" 
+		OR "ultra low temperature grid*"
+		OR "5th generation grid*"
+		OR "5th generation network*" 
+		OR "5th generation district heating and cooling"
+		OR "fifth generation grid*"
+		OR "fifth generation network*"
+		OR "fifth generation district heating and cooling"
+		OR "fith-generation grid*"
+		OR "fith-generation network*"
+		OR "fith-generation district heating and cooling")
+		AND TITLE-ABS-KEY(
+		"district*"
+		OR "energ*"
+		OR "heat*"
+		OR "cool*")
+		AND TITLE-ABS-KEY(
+		"modelica")
+###
+search_3
+###
+TITLE-ABS-KEY(
+		"district*"
+		OR "energ*"
+		OR "heat*"
+		OR "cool*")
+		AND TITLE-ABS-KEY(
+		"modelica")
+###
